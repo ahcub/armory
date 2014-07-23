@@ -23,7 +23,7 @@ class TestPoint(TestCase):
         points_test_data = {
             ((5, 1), (4, 9)): (1, -8),
             ((2, 6), (1, 3)): (1, 3),
-            ((10, 7), (4, 6)): (3, 1),
+            ((10, 7), (4, 6)): (6, 1),
             ((23415123, 12612461), (12696754, 45793)): (10718369, 12566668),
         }
         for input_data, expected_result in points_test_data.items():
