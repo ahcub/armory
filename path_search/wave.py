@@ -13,9 +13,10 @@ def wave(graph, start, end):
         recently_changed_elements = new_recently_changed_elements
         new_recently_changed_elements = []
 
+    graph_state[start] = 0
     path = []
     path_el = end
-    while path_el != -1:
+    while path_el:
         path.append(path_el)
         path_el = graph_state[path_el]
 
