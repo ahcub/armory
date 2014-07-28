@@ -1,4 +1,5 @@
 from timeit import timeit
+
 from path_search.performance_tests.test_data import *
 from path_search.wave import wave
 
@@ -10,4 +11,4 @@ def test(func, args):
     print(func.__name__, ' execution time:', execution_time)
 
 
-test(wave, (test_graph_data, start, end))
+test(wave, (ordered_unweighted_graph, start, end))
