@@ -1,4 +1,4 @@
-algorithms_in_python
+Algorithms in python
 ====================
 
 implementation of algorithms in python
