@@ -1,4 +1,3 @@
-
 graphs = {
     'ordered_unweighted': {  # used by wave algorithm
         'graph': {
@@ -14,7 +13,7 @@ graphs = {
             10: [6, 9],
         },
         'start': 3,
-        'end':  9,
+        'end': 9,
     },
 
     'ordered_weighted': {  # used by bellman-ford algorithm
@@ -34,4 +33,3 @@ graphs = {
         'end': 9,
     }
 }
-

@@ -1,4 +1,3 @@
-
 def bellman_ford(graph, start, end):
     graph_state = {element: None for element in graph.keys()}
     graph_state[start] = (None, 0)

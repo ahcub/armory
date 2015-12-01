@@ -1,5 +1,5 @@
-from geometry.point import classify
-from geometry.constants import *
+from algorithms.geometry.constants import *
+from algorithms.geometry.point import classify
 
 
 def point_in_polygon(p, polygon):

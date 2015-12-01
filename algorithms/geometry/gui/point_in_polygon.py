@@ -15,12 +15,13 @@ this is indicator of is point in polygon.
 To clean all data simply press right mouse button again. (you will be in polygon input mode again).
 """
 
-import pygame
 import sys
-from geometry.point_in_polygon import point_in_polygon
+
+import pygame
+
+from algorithms.geometry.point_in_polygon import point_in_polygon
 
 pygame.init()
-
 
 screen = pygame.display.set_mode((640, 480))
 

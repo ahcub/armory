@@ -1,7 +1,7 @@
 from unittest.case import TestCase
 
-from geometry import point_in_polygon
-from geometry.constants import *
+from algorithms.geometry import point_in_polygon
+from algorithms.geometry.constants import *
 
 
 class TestPointInPolygon(TestCase):

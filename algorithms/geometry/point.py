@@ -1,6 +1,6 @@
 from math import sqrt
 
-from geometry.constants import *
+from algorithms.geometry.constants import *
 
 
 def classify(p0, p1, p2):

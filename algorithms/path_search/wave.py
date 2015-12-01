@@ -1,4 +1,3 @@
-
 def wave(graph, start, end):
     """
     :param graph: dictionary that represents unweighted, ordered graph where keys are vertex indexes

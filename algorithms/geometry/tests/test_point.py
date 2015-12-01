@@ -1,7 +1,7 @@
 from unittest.case import TestCase
 
-from geometry import point
-from geometry.constants import *
+from algorithms.geometry import point
+from algorithms.geometry.constants import *
 
 
 class TestPoint(TestCase):
