@@ -2,13 +2,17 @@ import re
 from distutils.dir_util import mkpath
 from logging import getLogger
 from os import getcwd
-from urllib.error import HTTPError
-from urllib.parse import urljoin, urlsplit
-from urllib.request import Request, urlopen
-
 from os.path import join, dirname, splitext
 
-from os_utils.logging import configure_stream_logger
+try:
+    from urllib.error import HTTPError
+    from urllib.parse import urljoin, urlsplit
+    from urllib.request import Request, urlopen
+except ImportError:
+    from urllib2 import HTTPError, Request, urlopen
+    from urlparse import urljoin, urlsplit
+
+from ..os_utils.logging_utils import configure_stream_logger
 
 DEFAULT_HEADERS = {'User-Agent': 'Mozilla/5.0'}
 
@@ -76,7 +80,7 @@ def get_dest_file_path(dest_path, url):
     return dest_file_path
 
 
-def get_url_response(url, headers):
+def get_url_response(url, headers=DEFAULT_HEADERS):
     request = Request(url, headers=headers)
     response = urlopen(request).read()
     if url.endswith('.png'):
