@@ -6,6 +6,8 @@ from os.path import join
 LOGGING_FORMAT = '%(asctime)-15s %(levelname)s %(message)s'
 DATE_FORMAT = '[%Y-%m-%d %H:%M:%S]'
 
+logging.getLogger().level = logging.DEBUG
+
 
 def configure_stream_logger(stream=sys.stdout, level='DEBUG'):
     stream_handler = logging.StreamHandler(stream=stream)
@@ -23,8 +25,6 @@ def configure_file_logger(filename='app.log', level='DEBUG'):
     logging.getLogger().addHandler(file_handler)
 
 
-def configure_file_and_stream_logger(stream=sys.stdout, filename='app.log', level=logging.DEBUG):
+def configure_file_and_stream_logger(stream=sys.stdout, filename='app.log', level='DEBUG'):
     configure_stream_logger(stream, level)
     configure_file_logger(filename, level)
-
-
