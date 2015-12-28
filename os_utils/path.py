@@ -42,3 +42,4 @@ def add_permissions_to_dir_rec(path, permissions):
 def mkpath(path):
     if not isdir(path):
         os.makedirs(path)
+
