@@ -12,7 +12,7 @@ except ImportError:
     from urllib2 import HTTPError, Request, urlopen
     from urlparse import urljoin, urlsplit
 
-from ..os_utils.logging_utils import configure_stream_logger
+from os_utils.logging_utils import configure_stream_logger
 
 DEFAULT_HEADERS = {'User-Agent': 'Mozilla/5.0'}
 
@@ -56,7 +56,7 @@ def dump_web_pages_recursively(site_address, dest_path, urls=None, localize_link
 
                 if is_str_resp:
                     for new_url in get_related_page_urls(response):
-                        if new_url not in urls_registry and new_urls_filter(new_url):
+                        if new_url not in urls_registry:
                             next_urls.add(new_url)
 
                 if localize_links and is_str_resp:
@@ -118,7 +118,7 @@ def get_related_page_urls(page_content):
     logger.info('Getting page related urls')
     urls = []
     for res in page_content.splitlines():
-        pattern = re.compile(r'(?:href|src)=(?:"|\')/([^"\']*)(?:"|\')')
+        pattern = re.compile(r'(?:href|src)=(?:"|\')([^"\']*)(?:"|\')')
         for result in pattern.findall(res):
             if result is not None:
                 urls.append(result)
@@ -127,10 +127,18 @@ def get_related_page_urls(page_content):
 
 def new_urls_filter(new_url):
     return (new_url.startswith('reference') or new_url.startswith('assets')) and \
-        (splitext(new_url)[1] in ['', '.png', '.css'])
+        (splitext(new_url)[1] in ['', '.png', '.css', '.js'])
 
 if __name__ == '__main__':
     urls = [
-        'reference/encyclopedia/chapters/slug/introduction-to-venture-capital-and-private-equity-finance',
+        'en/countries-data/address-formats.html#fbid=ODjbzEvq6Xw',
     ]
-    dump_web_pages_recursively('https://vcexperts.com', join(getcwd(), 'test'), urls=urls, iteration_limit=2)
+    dump_web_pages_recursively('https://www.addressdoctor.com/', join(getcwd(), 'test'), urls=urls, iteration_limit=2, localize_links=False)
+    # with open(r'D:\GitHub\armory\web_scraping\test\en\countries-data\address-formats.html#fbid=ODjbzEvq6Xw') as file_:
+    #     print(get_related_page_urls(file_.read()))
+
+    # a = '''<script src="fileadmin/js/jquery.bgiframe.min.js" type="text/javascript"></script>\n'''
+    # pattern = re.compile(r'(?:href|src)=(?:"|\')([^"\']*)(?:"|\')')
+    # for result in pattern.findall(a):
+    #     if result is not None:
+    #         print(result)

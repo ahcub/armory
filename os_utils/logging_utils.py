@@ -17,12 +17,15 @@ def configure_stream_logger(stream=sys.stdout, level='DEBUG'):
     logging.getLogger().addHandler(stream_handler)
 
 
-def configure_file_logger(filename='app.log', level='DEBUG'):
-    file_handler = logging.FileHandler(filename=join(getcwd(), filename))
+def configure_file_logger(filename='app.log', level='DEBUG', rotate_file=True):
+    file_path = join(getcwd(), filename)
+    file_handler = logging.FileHandler(filename=file_path)
     file_handler.level = logging.getLevelName(level)
     formatter = logging.Formatter(datefmt=DATE_FORMAT, fmt=LOGGING_FORMAT)
     file_handler.setFormatter(formatter)
     logging.getLogger().addHandler(file_handler)
+    if rotate_file:
+        open(file_path, 'w').close()
 
 
 def configure_file_and_stream_logger(stream=sys.stdout, filename='app.log', level='DEBUG'):
