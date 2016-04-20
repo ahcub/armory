@@ -1,19 +1,15 @@
 from distutils.core import setup
 
-from os.path import dirname, abspath, join
-
-curr_file_path = dirname(abspath(__file__))
+from setuptools import find_packages
 
 setup(
     name='devut',
-    version='0.0.1',
+    packages=find_packages(include=('algorithms', 'os_utils', 'algorithms.*')),
+    version='0.0.5',
     description='dev utils to reduce copy paste',
     author='Alex Buchkovsky',
     author_email='olex.buchkovsky@gmail.com',
     url='https://github.com/ahcub/armory',
-    packages=['algorithms', 'os_utils'],
-    package_dir={
-        'algorithms': join(curr_file_path, 'algorithms'),
-        'os_utils': join(curr_file_path, 'os_utils')
-    }
+    download_url='https://github.com/ahcub/armory/tarball/0.0.5',
+    keywords=['logging', 'path', 'dirs', 'files'],
 )
