@@ -3,7 +3,6 @@ from distutils.dir_util import remove_tree
 from os.path import join, isdir, isfile, islink, exists
 from stat import *
 
-
 WRITE = S_IWUSR | S_IWGRP | S_IWOTH
 
 
@@ -37,9 +36,3 @@ def add_permissions_to_multiple_paths(root, paths, permissions):
 def add_permissions_to_dir_rec(path, permissions):
     for root, dirs, files in os.walk(path):
         add_permissions_to_multiple_paths(root, dirs + files, permissions)
-
-
-def mkpath(path):
-    if not isdir(path):
-        os.makedirs(path)
-
