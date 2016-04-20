@@ -1,14 +1,16 @@
 import os
 from distutils.dir_util import remove_tree
 from os.path import join, isdir, isfile, islink, exists
+from pathlib import Path
 from stat import *
+
 
 WRITE = S_IWUSR | S_IWGRP | S_IWOTH
 
 
 def clear_dir(path):
     delete(path)
-    mkpath(path)
+    Path.mkdir(path, parents=True, exist_ok=True)
 
 
 def delete(path):
