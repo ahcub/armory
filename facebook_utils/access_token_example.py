@@ -1,7 +1,12 @@
 #!/usr/bin/python
 # coding: utf-8
 import subprocess
-from urllib.parse import urlencode, parse_qs
+
+try:
+    from urllib.parse import urlencode, parse_qs
+except ImportError:
+    from urllib import urlencode
+    from urlparse import parse_qs
 
 import facebook
 
