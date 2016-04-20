@@ -1,7 +1,6 @@
 import re
 from distutils.dir_util import mkpath
 from logging import getLogger
-from os import getcwd
 from os.path import join, dirname, splitext
 
 try:
@@ -128,17 +127,3 @@ def get_related_page_urls(page_content):
 def new_urls_filter(new_url):
     return (new_url.startswith('reference') or new_url.startswith('assets')) and \
         (splitext(new_url)[1] in ['', '.png', '.css', '.js'])
-
-if __name__ == '__main__':
-    urls = [
-        'en/countries-data/address-formats.html#fbid=ODjbzEvq6Xw',
-    ]
-    dump_web_pages_recursively('https://www.addressdoctor.com/', join(getcwd(), 'test'), urls=urls, iteration_limit=2, localize_links=False)
-    # with open(r'D:\GitHub\armory\web_scraping\test\en\countries-data\address-formats.html#fbid=ODjbzEvq6Xw') as file_:
-    #     print(get_related_page_urls(file_.read()))
-
-    # a = '''<script src="fileadmin/js/jquery.bgiframe.min.js" type="text/javascript"></script>\n'''
-    # pattern = re.compile(r'(?:href|src)=(?:"|\')([^"\']*)(?:"|\')')
-    # for result in pattern.findall(a):
-    #     if result is not None:
-    #         print(result)
