@@ -12,9 +12,16 @@ logger = logging.getLogger()
 logger.level = logging.DEBUG
 
 
-def configure_stream_logger(stream=sys.stdout, level='DEBUG'):
+def configure_stream_logger(stream=sys.stdout, level='DEBUG', track_configured_loggers=True):
+    level = logging.getLevelName(level)
+    if track_configured_loggers:
+        for handler in logging.root.handlers:
+            if isinstance(handler, logging.StreamHandler) and handler.stream == stream \
+                    and handler.level == level:
+                return
+
     stream_handler = logging.StreamHandler(stream=stream)
-    stream_handler.level = logging.getLevelName(level)
+    stream_handler.level = level
     formatter = logging.Formatter(datefmt=DATE_FORMAT, fmt=LOGGING_FORMAT)
     stream_handler.setFormatter(formatter)
     logging.getLogger().addHandler(stream_handler)
