@@ -1,2 +1,3 @@
 python replace_version_in_setup_py.py
-python setup.py sdist upload -r pypi
+python setup.py sdist
+twine upload --repository pypi dist/*
